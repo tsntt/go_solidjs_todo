@@ -1,0 +1,18 @@
+meta {
+  name: Create
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://172.26.11.232:4000/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content": "My new task 2",
+    "due": "1698285193"
+  }
+}

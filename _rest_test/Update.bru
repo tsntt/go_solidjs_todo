@@ -1,0 +1,18 @@
+meta {
+  name: Update
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://172.26.11.232:4000/update/2
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content": "My new task 2 updated",
+    "due": "1698285193"
+  }
+}
