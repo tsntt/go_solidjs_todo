@@ -15,8 +15,8 @@ func main() {
 
 	taskHandlers := usecases.NewTaskInteractor(db)
 
-	taskHandlers.Create("take a shower", "1695949414")
-	taskHandlers.Create("take another shower", "1698541414")
+	taskHandlers.Create("take a shower", "wash face", "1695949414000")
+	taskHandlers.Create("take another shower", "wash feet", "1698541414000")
 
 	server := api.NewApiServer(taskHandlers)
 

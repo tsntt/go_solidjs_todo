@@ -3,11 +3,12 @@ package entities
 import "time"
 
 type Task struct {
-	ID        int       `json:"id"`
-	Content   string    `json:"content"`
-	Status    bool      `json:"status"`
-	Due       time.Time `json:"due"`
-	CreatedAt time.Time `json:"created_at"`
+	ID          int       `json:"id"`
+	Content     string    `json:"content"`
+	Description string    `json:"description"`
+	Status      bool      `json:"status"`
+	Due         time.Time `json:"due"`
+	CreatedAt   time.Time `json:"created_at"`
 }
 
 type TaskRepository interface {
@@ -20,8 +21,4 @@ type TaskRepository interface {
 
 func (t *Task) ChangeStatus() {
 	t.Status = !t.Status
-}
-
-func (t *Task) IsLate() bool {
-	return t.Due.Before(time.Now().UTC())
 }

@@ -65,7 +65,7 @@ func (s *ApiServer) HandlerCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	newTask, err := s.services.Create(vars["content"], vars["due"])
+	newTask, err := s.services.Create(vars["content"], vars["description"], vars["due"])
 	if err != nil {
 		util.WriteJson(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
 		return
@@ -96,7 +96,7 @@ func (s *ApiServer) HandlerUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	task, err := s.services.Update(id, vars["content"], vars["due"])
+	task, err := s.services.Update(id, vars["content"], vars["description"], vars["due"])
 	if err != nil {
 		util.WriteJson(w, http.StatusNotFound, map[string]string{"error": err.Error()})
 		return

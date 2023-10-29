@@ -16,14 +16,15 @@ func NewTaskInteractor(store entities.TaskRepository) *TaskInteractor {
 	}
 }
 
-func (interactor *TaskInteractor) Create(content string, due string) (*entities.Task, error) {
+func (interactor *TaskInteractor) Create(content, description, due string) (*entities.Task, error) {
 	timeDue := util.StringToTimeUnix(due)
 
 	newTask := entities.Task{
-		Content:   content,
-		Status:    false,
-		Due:       timeDue,
-		CreatedAt: time.Now().UTC(),
+		Content:     content,
+		Description: description,
+		Status:      false,
+		Due:         timeDue,
+		CreatedAt:   time.Now().UTC(),
 	}
 
 	createdTask, err := interactor.TaskInteractor.Create(newTask)
@@ -34,7 +35,7 @@ func (interactor *TaskInteractor) Create(content string, due string) (*entities.
 	return createdTask, nil
 }
 
-func (interactor *TaskInteractor) Update(id int, content string, due string) (*entities.Task, error) {
+func (interactor *TaskInteractor) Update(id int, content, description, due string) (*entities.Task, error) {
 	timeDue := util.StringToTimeUnix(due)
 
 	task, err := interactor.TaskInteractor.Get(id)
@@ -43,6 +44,7 @@ func (interactor *TaskInteractor) Update(id int, content string, due string) (*e
 	}
 
 	task.Content = content
+	task.Description = description
 	task.Due = timeDue
 
 	updatedTask, err := interactor.TaskInteractor.Update(task)
