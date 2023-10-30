@@ -1,0 +1,77 @@
+[
+    {
+        "content": "Grocery Shopping",
+        "description": "Buy fruits, vegetables, and other essentials.",
+        "due": "1657155600000"
+    },
+    {
+        "content": "Complete Project Report",
+        "description": "Finish the quarterly project report for the team.",
+        "due": "1657553400000"
+    },
+    {
+        "content": "Run 5 Miles",
+        "description": "Go for a long run to stay fit and healthy.",
+        "due": "1656786000000"
+    },
+    {
+        "content": "Call Grandma",
+        "description": "Catch up with Grandma and see how she's doing.",
+        "due": "1657274700000"
+    },
+    {
+        "content": "Pay Utility Bills",
+        "description": "Settle the electricity, water, and internet bills.",
+        "due": "1658041200000"
+    },
+    {
+        "content": "Organize Closet",
+        "description": "Declutter and reorganize the bedroom closet.",
+        "due": "1657830000000"
+    },
+    {
+        "content": "Attend Team Meeting",
+        "description": "Participate in the weekly team meeting at work.",
+        "due": "1656924600000"
+    },
+    {
+        "content": "Plan Weekend Getaway",
+        "description": "Research and decide on a destination for a weekend trip.",
+        "due": "1657484400000"
+    },
+    {
+        "content": "Learn Guitar Chords",
+        "description": "Practice and master new guitar chords.",
+        "due": "1658447700000"
+    },
+    {
+        "content": "Write Thank You Cards",
+        "description": "Express gratitude by writing and sending thank you cards.",
+        "due": "1657591800000"
+    },
+    {
+        "content": "Update Resume",
+        "description": "Revise and update your resume for job applications.",
+        "due": "1657883100000"
+    },
+    {
+        "content": "Fix Leaky Faucet",
+        "description": "Call the plumber to repair the kitchen faucet.",
+        "due": "1657355700000"
+    },
+    {
+        "content": "Read a Chapter",
+        "description": "Read a chapter from the new book you bought.",
+        "due": "1657383600000"
+    },
+    {
+        "content": "Schedule Dentist Appointment",
+        "description": "Book an appointment for a dental check-up.",
+        "due": "1657700700000"
+    },
+    {
+        "content": "Start Online Course",
+        "description": "Enroll in and begin an online course on a topic of interest.",
+        "due": "1657105800000"
+    }
+]
