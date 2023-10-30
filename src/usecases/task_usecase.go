@@ -1,6 +1,7 @@
 package usecases
 
 import (
+	"errors"
 	"time"
 	"tsn/todo/src/entities"
 	"tsn/todo/src/util"
@@ -17,6 +18,14 @@ func NewTaskInteractor(store entities.TaskRepository) *TaskInteractor {
 }
 
 func (interactor *TaskInteractor) Create(content, description, due string) (*entities.Task, error) {
+	if content == "" || due == "" {
+		return nil, errors.New("cannot be empty")
+	}
+
+	if len(content) > 150 || len(description) > 200 {
+		return nil, errors.New("task has more content than expected")
+	}
+
 	timeDue := util.StringToTimeUnix(due)
 
 	newTask := entities.Task{
@@ -36,6 +45,14 @@ func (interactor *TaskInteractor) Create(content, description, due string) (*ent
 }
 
 func (interactor *TaskInteractor) Update(id int, content, description, due string) (*entities.Task, error) {
+	if content == "" || due == "" {
+		return nil, errors.New("cannot be empty")
+	}
+
+	if len(content) > 150 || len(description) > 200 {
+		return nil, errors.New("task has more content than expected")
+	}
+
 	timeDue := util.StringToTimeUnix(due)
 
 	task, err := interactor.TaskInteractor.Get(id)
