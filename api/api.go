@@ -19,19 +19,21 @@ func NewApiServer(services *usecases.TaskInteractor) *ApiServer {
 	}
 }
 
-func (s *ApiServer) Run() {
+func (s *ApiServer) Run(mode string) {
 	routes := http.NewServeMux()
 
-	solidjs := http.FileServer(http.Dir("./view/solidjs"))
+	if mode == "interface" {
+		solidjs := http.FileServer(http.Dir("./view"))
+		routes.Handle("/", solidjs)
+	}
 
-	routes.Handle("/", solidjs)
 	routes.HandleFunc("/getall", s.HandlerIndex)
 	routes.HandleFunc("/create", s.HandlerCreate)
 	routes.HandleFunc("/update/", s.HandlerUpdate)
 	routes.HandleFunc("/changestatus/", s.HandlerChangeStatus)
 	routes.HandleFunc("/delete/", s.HandlerDelete)
 
-	log.Println("Api listening at port: 4000")
+	log.Printf("%s listening at port: 4000\n", mode)
 	log.Fatal(http.ListenAndServe(":4000", routes))
 }
 

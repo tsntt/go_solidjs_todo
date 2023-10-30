@@ -34,5 +34,5 @@ func main() {
 	taskHandlers := usecases.NewTaskInteractor(db)
 	server := api.NewApiServer(taskHandlers)
 
-	server.Run()
+	server.Run(envVars["MODE"])
 }
