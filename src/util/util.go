@@ -7,10 +7,28 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
 )
+
+func SetEnvs(fileUrl string, variable *map[string]string) error {
+	jsonFile, err := os.Open(fileUrl)
+	if err != nil {
+		return err
+	}
+	defer jsonFile.Close()
+
+	byteValue, err := io.ReadAll(jsonFile)
+	if err != nil {
+		return err
+	}
+
+	json.Unmarshal(byteValue, &variable)
+
+	return nil
+}
 
 func StringToTimeUnix(t string) time.Time {
 	tInt, err := strconv.ParseInt(t, 10, 64)

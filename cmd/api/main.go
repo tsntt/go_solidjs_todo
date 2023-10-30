@@ -1,25 +1,38 @@
 package main
 
 import (
+	"log"
 	"tsn/todo/api"
-	data "tsn/todo/data/memory"
+	mem "tsn/todo/data/memory"
+	data "tsn/todo/data/postgres"
 	"tsn/todo/src/entities"
 	"tsn/todo/src/usecases"
+	"tsn/todo/src/util"
 )
 
 func main() {
+	var db entities.TaskRepository
+	var envVars map[string]string
 
-	var tasklist []entities.Task
+	err := util.SetEnvs("env.json", &envVars)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	db := data.NewMemoryStorage(tasklist)
+	if envVars["USEDB"] == "memory" {
+		var tasklist []entities.Task
+		db = mem.NewMemoryStorage(tasklist)
+	}
+
+	if envVars["USEDB"] == "postgres" {
+		db, err = data.NewPostgresStore(envVars["DBCONN"])
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 
 	taskHandlers := usecases.NewTaskInteractor(db)
-
-	taskHandlers.Create("take a shower", "wash face", "1695949414000")
-	taskHandlers.Create("take another shower", "wash feet", "1698541414000")
-
 	server := api.NewApiServer(taskHandlers)
 
 	server.Run()
-
 }
